@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class JPAUtils {
 
-    private static EntityManagerFactory entityManagerFactory = createEntityManagerFactory();
+    private static final EntityManagerFactory entityManagerFactory = createEntityManagerFactory();
 
     private static EntityManagerFactory createEntityManagerFactory() {
         return Persistence.createEntityManagerFactory("mysql-jpa");

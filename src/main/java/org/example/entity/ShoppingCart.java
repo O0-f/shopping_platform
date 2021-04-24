@@ -1,9 +1,9 @@
 package org.example.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -12,18 +12,36 @@ public class ShoppingCart implements Serializable {
 
     private static final long serialVersionUID = -3258839839160856613L;
     private String id;
+    private String name;
     private String user_id;
     private String commodity_id;
     private long quantity;
 
     @Id
-    @Column(unique = true)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.example.utils.IdGenerator",
+            parameters = {
+                    @Parameter(name = "prefix", value = "cartId_")
+            }
+    )
+    @Column(name = "id")
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Column(name = "user_id")

@@ -1,14 +1,8 @@
-package org.example.entity;
+package org.example.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "commodity")
-public class Commodity implements Serializable {
+public class CommodityDto implements Serializable {
 
     private static final long serialVersionUID = -3258839839160856613L;
     private String id;
@@ -17,11 +11,8 @@ public class Commodity implements Serializable {
     private double price;
     private long quantity;
     private long views;
-    private String details;
     private String img;
 
-    @Id
-    @Column(unique = true)
     public String getId() {
         return id;
     }
@@ -30,7 +21,6 @@ public class Commodity implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "type")
     public String getType() {
         return type;
     }
@@ -39,7 +29,6 @@ public class Commodity implements Serializable {
         this.type = type;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -48,7 +37,6 @@ public class Commodity implements Serializable {
         this.name = name;
     }
 
-    @Column(name = "price")
     public double getPrice() {
         return price;
     }
@@ -57,7 +45,6 @@ public class Commodity implements Serializable {
         this.price = price;
     }
 
-    @Column(name = "quantity")
     public long getQuantity() {
         return quantity;
     }
@@ -66,7 +53,6 @@ public class Commodity implements Serializable {
         this.quantity = quantity;
     }
 
-    @Column(name = "views")
     public long getViews() {
         return views;
     }
@@ -75,16 +61,6 @@ public class Commodity implements Serializable {
         this.views = views;
     }
 
-    @Column(name = "details")
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    @Column(name = "img")
     public String getImg() {
         return img;
     }

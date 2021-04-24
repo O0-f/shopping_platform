@@ -1,14 +1,14 @@
 package org.example.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = -3258839839160856613L;
@@ -20,9 +20,18 @@ public class Order implements Serializable {
     private String store_id;
     private String address_id;
     private Timestamp time;
+    private String status;
 
     @Id
-    @Column(unique = true)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.example.utils.IdGenerator",
+            parameters = {
+                    @Parameter(name = "prefix", value = "orderId_")
+            }
+    )
+    @Column(name = "id")
     public String getId() {
         return id;
     }
@@ -92,5 +101,14 @@ public class Order implements Serializable {
 
     public void setTime(Timestamp time) {
         this.time = time;
+    }
+
+    @Column(name = "status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
