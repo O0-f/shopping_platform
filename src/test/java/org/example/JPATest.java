@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import org.example.dao.AddressDao;
 import org.example.dao.OrderDao;
 import org.example.dao.UserDao;
+import org.example.dto.CommodityDto;
 import org.example.dto.OrderDto;
 import org.example.dto.ShoppingCartDto;
 import org.example.entity.Address;
@@ -217,6 +218,7 @@ public class JPATest {
         List<Multimap<String, Object>> multimaps = orderService.find("user_id_test");
         List<ShoppingCartDto> shoppingCartDtos = shoppingCartService.find("user_id_test");
         List<String> types = commodityService.getTypes();
+        List<CommodityDto> commodityDtos = commodityService.search("commodity");
         System.out.println("Success");
     }
 }

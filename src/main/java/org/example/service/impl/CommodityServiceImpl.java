@@ -74,6 +74,12 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
+    public List<CommodityDto> search(String name) {
+        String sql = "SELECT * FROM commodity_view WHERE name LIKE ?";
+        return commodityDao.query(sql, CommodityDto.class, "%" + name + "%");
+    }
+
+    @Override
     public List<CommodityDto> find(String type) {
         String sql = "SELECT * FROM commodity_view WHERE type = ?";
         return commodityDao.query(sql, CommodityDto.class, type);

@@ -128,4 +128,27 @@ public class CommodityController extends BaseController {
         }
         return ResultMap.getInstance();
     }
+
+    @RequestMapping(value = "searchCommodity")
+    @ResponseBody
+    public ResultMap searchCommodity(@RequestBody String param) {
+        try {
+            JSONObject jsonObject = JSON.parseObject(param);
+            String commodityName = jsonObject.getString("commodity_name");
+            Token token = jsonObject.getObject("token", Token.class);
+            if (! token.equals(cache.get(token.getUser_id(), Token.class))) {
+                throw new Exception("Token error.");
+            }
+            token.setTimestamp(new Timestamp(System.currentTimeMillis()));
+            cache.put(token.getUser_id(), token);
+            Map<String, Object> result = new HashMap<>();
+            result.put("token", token);
+            result.put("commodity", commodityService.search(commodityName));
+            ResultMap.setInstance(Status.SUCCESS.getStatus(), "Search commodity successfully.", result);
+        } catch (Exception exception) {
+            handleException(exception);
+            return ResultMap.getInstance();
+        }
+        return ResultMap.getInstance();
+    }
 }

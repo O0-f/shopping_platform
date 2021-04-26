@@ -17,6 +17,8 @@ public interface CommodityService {
 
     String getDetails(String id);
 
+    List<CommodityDto> search(String name);
+
     List<CommodityDto> find(String type);
 
     List<CommodityDto> findAll();
