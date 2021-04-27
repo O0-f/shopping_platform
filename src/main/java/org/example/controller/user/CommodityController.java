@@ -120,7 +120,7 @@ public class CommodityController extends BaseController {
             cache.put(token.getUser_id(), token);
             Map<String, Object> result = new HashMap<>();
             result.put("token", token);
-            result.put("type", details);
+            result.put("details", details);
             ResultMap.setInstance(Status.SUCCESS.getStatus(), "Get details successfully.", result);
         } catch (Exception exception) {
             handleException(exception);
