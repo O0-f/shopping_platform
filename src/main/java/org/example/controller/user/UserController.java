@@ -208,7 +208,7 @@ public class UserController extends BaseController {
             Map<String, Object> result = new HashMap<>();
             result.put("token", token);
             result.put("user", userService.findView(jsonObject.getString("id")));
-            ResultMap.setInstance(Status.SUCCESS.getStatus(), "Update Password successfully.", result);
+            ResultMap.setInstance(Status.SUCCESS.getStatus(), "Update password successfully.", result);
         } catch (Exception exception) {
             handleException(exception);
             return ResultMap.getInstance();
