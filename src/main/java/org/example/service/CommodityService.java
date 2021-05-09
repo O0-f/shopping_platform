@@ -15,6 +15,8 @@ public interface CommodityService {
 
     List<String> getTypes();
 
+    Long getViews(String id);
+
     String getDetails(String id);
 
     List<CommodityDto> search(String name);

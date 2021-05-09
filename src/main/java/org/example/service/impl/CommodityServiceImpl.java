@@ -69,6 +69,11 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
+    public Long getViews(String id) {
+        return commodityDao.findById(id).getViews();
+    }
+
+    @Override
     public String getDetails(String id) {
         return commodityDao.findById(id).getDetails();
     }

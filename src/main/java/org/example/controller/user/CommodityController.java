@@ -116,6 +116,7 @@ public class CommodityController extends BaseController {
                 throw new Exception("Token error.");
             }
             String details = commodityService.getDetails(commodityId);
+            commodityService.update(commodityId, "views", commodityService.getViews(commodityId) + 1);
             token.setTimestamp(new Timestamp(System.currentTimeMillis()));
             cache.put(token.getUser_id(), token);
             Map<String, Object> result = new HashMap<>();
